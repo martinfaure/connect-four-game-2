@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="FR-fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./css/reset.css" />
+		<link rel="stylesheet" href="./css/normalize.css" />
+		<link rel="stylesheet" href="./css/main.css" />
+		<title>connect-four-game</title>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<li>
+					<button id="btn-menu-nav" class="btn-nav-menu btn-nav-style">
+						MENU
+					</button>
+				</li>
+				<li><img src="./assets/logo.svg" alt="nav-logo	" /></li>
+				<li>
+					<button class="btn-nav-restart btn-nav-style">RESTART</button>
+				</li>
+			</nav>
+		</header>
+		<main>
+			<!-- <dialog open class="pp-rules">
+				<div class="rules">
+					<div class="rules-div">
+						<div class="title-rules">
+							<span class="l-style"> RULES </span>
+						</div>
+						<div class="txt-rules">
+							<span class="s-style purple-span">OBJECTIVE</span>
+							<p>
+								Be the first player to connect 4 of the same colored discs in a
+								row (either vertically, horizontally, or diagonally).
+							</p>
+							<span class="s-style purple-span">HOW TO PLAY</span>
+							<ol>
+								<li>Red goes first in the first game.</li>
+								<li>
+									Players must alternate turns, and only one disc can be dropped
+									in each turn.
+								</li>
+								<li>
+									The game ends when there is a 4-in-a-row or a stalemate.
+								</li>
+								<li>
+									The starter of the previous game goes second on the next game.
+								</li>
+							</ol>
+						</div>
+						<img class="btn-check-rules" src="/assets/icon-check.svg" alt="" />
+					</div>
+				</div>
+			</dialog> -->
+			<!-- <dialog open class="pp-pause">
+				<div class="pause">
+					<div class="title-pause">
+						<span class="l-style">PAUSE</span>
+					</div>
+					<div class="btn-pause">
+						<button class="btn-white m-style">CONTINUE GAME</button>
+						<button class="btn-white m-style">RESTART</button
+						><button class="btn-red m-style">QUIT GAME</button>
+					</div>
+				</div>
+			</dialog> -->
+			<dialog open class="pp-menu">
+				<div class="menu">
+					<img class="logo-menu" src="./assets/logo.svg" alt=" logo menu" />
+					<div class="btn-menu">
+						<button id="btn-menu-start" class="btn-yellow m-style">
+							PLAY VS PLAYER
+							<img
+								src="./assets/player-vs-player.svg"
+								alt="player-vs-player"
+							/></button
+						><button id="btn-menu-rules" class="btn-white-menu m-style">
+							GAME RULES
+						</button>
+					</div>
+				</div>
+			</dialog>
+			<section class="players-section">
+				<section class="player-one-score">
+					<img src="./assets/player-one.svg" alt="player-one" />
+					<div class="player-one-txt">
+						<p class="s-style">PLAYER 1</p>
+						<span class="l-style" aria-live="polite" role="log">0</span>
+					</div>
+				</section>
+				<section class="game-shapes">
+					<div class="shape-1">
+						<img src="./assets/Shape (1).svg" alt="shape-1" />
+					</div>
+					<div class="grid-game">
+						<button class="grid" id="btngrid"><img src="" alt="" /></button>
+						<button class="grid" id="btngrid"><img src="" alt="" /></button>
+						<button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button
+						><button class="grid" id="btngrid"><img src="" alt="" /></button>
+					</div>
+					<div class="shape-2">
+						<img src="./assets/Shape (2).svg" alt="shape-2-background-black" />
+					</div>
+				</section>
+				<section class="player-two-score">
+					<img src="./assets/player-two.svg" alt="player-two" />
+					<div class="player-two-txt">
+						<p class="s-style">PLAYER 2</p>
+						<span class="l-style" aria-live="polite" role="log">0</span>
+					</div>
+				</section>
+			</section>
+			<!-- <section class="chrono-yellow">
+				<img
+					class="img-chrono-yellow"
+					src="/assets/Rectangle-yellow-player-turn.svg"
+					alt="chrono-player-turn-yellow"
+				/>
+				<div>
+					<p class="p-style">PLAYER 2’S TURN</p>
+					<span class="l-style">30s</span>
+				</div>
+			</section> -->
+			<section class="chrono-red">
+				<img
+					class="img-chrono-red"
+					src="/assets/Rectangle-red-player-turn.svg"
+					alt="chrono-player-turn-red"
+				/>
+				<div>
+					<p class="p-style">PLAYER 1’S TURN</p>
+					<span class="l-style">30s</span>
+				</div>
+			</section>
+			<!-- <section class="chrono-red-win">
+				<div>
+					<p class="p-style">PLAYER 1</p>
+					<span class="l-style">WINS</span>
+					<button>PLAY AGAIN</button>
+				</div>
+			</section> -->
+			<div class="background-rectangle"></div>
+			<!-- <div class="background-rectangle-red"></div>
+			<div class="background-rectangle-yellow"></div> -->
+		</main>
+		<script src="./app.js"></script>
+	</body>
+</html>
