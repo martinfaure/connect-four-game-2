@@ -78,71 +78,126 @@ document.addEventListener("click", () => {
 	}
 });
 
-function openMenu() {
-	const body = document.body;
-	const PpMenu = document.createElement("dialog");
-	PpMenu.classList.add("pp-menu");
-	PpMenu.open = true;
-	PpMenu.style.zIndex = "1000";
+// function openMenu() {
+// 	const body = document.body;
+// 	const PpMenu = document.createElement("dialog");
+// 	PpMenu.classList.add("pp-menu");
+// 	PpMenu.open = true;
+// 	PpMenu.style.zIndex = "1000";
 
-	const menuContainer = document.createElement("div");
-	menuContainer.classList.add("menu");
+// 	const menuContainer = document.createElement("div");
+// 	menuContainer.classList.add("menu");
 
-	const imgMenu = document.createElement("img");
-	imgMenu.classList.add("logo-menu");
-	imgMenu.src = "./assets/logo.svg";
-	imgMenu.alt = "logo menu";
-	imgMenu.style.cursor = "pointer";
+// 	const imgMenu = document.createElement("img");
+// 	imgMenu.classList.add("logo-menu");
+// 	imgMenu.src = "./assets/logo.svg";
+// 	imgMenu.alt = "logo menu";
+// 	imgMenu.style.cursor = "pointer";
 
-	const menuBtn = document.createElement("div");
-	menuBtn.classList.add("btn-menu");
+// 	const menuBtn = document.createElement("div");
+// 	menuBtn.classList.add("btn-menu");
 
-	const btnMenu = document.createElement("button");
-	btnMenu.setAttribute("id", "btn-menu-start");
-	//
-	//
-	// le btn ne marche qu'une fois, il ne peut pas être refermé une deuxieme fois bug à regler, les deux popup de menu n'ont pas le même nom !
-	//
-	//
-	btnMenu.classList.add("btn-yellow", "m-style");
-	// btnMenu.id("btn-menu-start")
-	btnMenu.textContent = "PLAY VS PLAYER";
-	btnMenu.addEventListener("click", () => {
-		PpMenu.remove();
-	});
+// 	const btnMenu = document.createElement("button");
+// 	btnMenu.setAttribute("id", "btn-menu-start");
 
-	const imgBtnMenu = document.createElement("img");
-	imgBtnMenu.src = "./assets/player-vs-player.svg";
-	imgBtnMenu.alt = "player-vs-player";
-	imgBtnMenu.style.cursor = "pointer";
+// 	btnMenu.classList.add("btn-yellow", "m-style");
+// 	btnMenu.textContent = "PLAY VS PLAYER";
+// 	btnMenu.addEventListener("click", () => {
+// 		PpMenu.remove();
+// 	});
 
-	const btnMenu2 = document.createElement("button");
-	btnMenu2.setAttribute("id", "btn-menu-rules");
-	btnMenu2.classList.add("btn-white-menu", "m-style");
-	btnMenu2.textContent = "GAME RULES";
-	document.addEventListener("click", () => {
-		if (btnMenu2) {
-			btnMenu2.addEventListener("click", createRulesDialog);
-		}
-	});
+// 	const imgBtnMenu = document.createElement("img");
+// 	imgBtnMenu.src = "./assets/player-vs-player.svg";
+// 	imgBtnMenu.alt = "player-vs-player";
+// 	imgBtnMenu.style.cursor = "pointer";
 
-	menuContainer.appendChild(imgMenu);
-	menuContainer.appendChild(imgBtnMenu);
-	menuContainer.appendChild(menuBtn);
-	menuBtn.appendChild(btnMenu);
-	btnMenu.appendChild(imgBtnMenu);
-	menuBtn.appendChild(btnMenu2);
-	PpMenu.appendChild(menuContainer);
-	body.appendChild(PpMenu);
-}
+// 	const btnMenu2 = document.createElement("button");
+// 	btnMenu2.setAttribute("id", "btn-menu-rules");
+// 	btnMenu2.classList.add("btn-white-menu", "m-style");
+// 	btnMenu2.textContent = "GAME RULES";
+// 	document.addEventListener("click", () => {
+// 		if (btnMenu2) {
+// 			btnMenu2.addEventListener("click", createRulesDialog);
+// 		}
 
-const btnMenuNav = document.querySelector("#btn-menu-nav");
-btnMenuNav.addEventListener("click", () => {
-	openMenu();
-});
+// 		return;
+// 	});
+
+// 	menuContainer.appendChild(imgMenu);
+// 	menuContainer.appendChild(imgBtnMenu);
+// 	menuContainer.appendChild(menuBtn);
+// 	menuBtn.appendChild(btnMenu);
+// 	btnMenu.appendChild(imgBtnMenu);
+// 	menuBtn.appendChild(btnMenu2);
+// 	PpMenu.appendChild(menuContainer);
+// 	body.appendChild(PpMenu);
+// }
 
 const btnStart = document.getElementById("btn-menu-start");
 btnStart.addEventListener("click", () => {
 	const ppMenu = document.querySelector(".pp-menu");
 	ppMenu.remove();
 });
+
+function openPauseMenu() {
+	const body = document.body;
+	const PpPause = document.createElement("dialog");
+	PpPause.classList.add("pp-pause");
+	PpPause.style.zIndex = "1000";
+
+	const pauseContainer = document.createElement("div");
+	pauseContainer.classList.add("pause");
+
+	const pauseTitle = document.createElement("div");
+	pauseTitle.classList.add("title-pause");
+	const spanTitle = document.createElement("span");
+	spanTitle.classList.add("l-style");
+	spanTitle.textContent = "PAUSE";
+
+	const btnPauseMenu = document.createElement("div");
+	btnPauseMenu.classList.add("btn-pause");
+
+	const btn1Pause = document.createElement("button");
+	btn1Pause.classList.add("btn-white", "m-style");
+	btn1Pause.textContent = "CONTINUE GAME";
+
+	const btn2Pause = document.createElement("button");
+	btn2Pause.classList.add("btn-white", "m-style");
+	btn2Pause.textContent = "RESTART";
+
+	const btn3Pause = document.createElement("button");
+	btn3Pause.classList.add("btn-red", "m-style");
+	btn3Pause.textContent = "QUIT GAME";
+	btn3Pause.setAttribute("id", "btn-pause-quit");
+
+	PpPause.appendChild(pauseContainer);
+	pauseContainer.appendChild(pauseTitle);
+	pauseTitle.appendChild(spanTitle);
+	pauseContainer.appendChild(btnPauseMenu);
+	btnPauseMenu.appendChild(btn1Pause);
+	btnPauseMenu.appendChild(btn2Pause);
+	btnPauseMenu.appendChild(btn3Pause);
+
+	document.body.appendChild(PpPause);
+
+	PpPause.showModal();
+
+	btn3Pause.addEventListener("click", () => {
+		const body = document.body;
+		const ppMenu2 = document.querySelector(".pp-menu");
+		body.appendChild(ppMenu2);
+		PpPause.remove();
+	});
+
+	return;
+}
+
+const btnMenuNav = document.querySelector("#btn-menu-nav");
+btnMenuNav.addEventListener("click", () => {
+	openPauseMenu();
+});
+
+// const btnQuitGame = document.querySelector("#btn-pause-quit");
+// btnQuitGame.addEventListener("click", () => {
+// 	body.appendChild(openMenu);
+// });
