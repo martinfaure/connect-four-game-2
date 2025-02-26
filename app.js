@@ -78,60 +78,60 @@ document.addEventListener("click", () => {
 	}
 });
 
-// function openMenu() {
-// 	const body = document.body;
-// 	const PpMenu = document.createElement("dialog");
-// 	PpMenu.classList.add("pp-menu");
-// 	PpMenu.open = true;
-// 	PpMenu.style.zIndex = "1000";
+function openMenu() {
+	const body = document.body;
+	const PpMenu = document.createElement("dialog");
+	PpMenu.classList.add("pp-menu");
+	PpMenu.open = true;
+	PpMenu.style.zIndex = "1000";
 
-// 	const menuContainer = document.createElement("div");
-// 	menuContainer.classList.add("menu");
+	const menuContainer = document.createElement("div");
+	menuContainer.classList.add("menu");
 
-// 	const imgMenu = document.createElement("img");
-// 	imgMenu.classList.add("logo-menu");
-// 	imgMenu.src = "./assets/logo.svg";
-// 	imgMenu.alt = "logo menu";
-// 	imgMenu.style.cursor = "pointer";
+	const imgMenu = document.createElement("img");
+	imgMenu.classList.add("logo-menu");
+	imgMenu.src = "./assets/logo.svg";
+	imgMenu.alt = "logo menu";
+	imgMenu.style.cursor = "pointer";
 
-// 	const menuBtn = document.createElement("div");
-// 	menuBtn.classList.add("btn-menu");
+	const menuBtn = document.createElement("div");
+	menuBtn.classList.add("btn-menu");
 
-// 	const btnMenu = document.createElement("button");
-// 	btnMenu.setAttribute("id", "btn-menu-start");
+	const btnMenu = document.createElement("button");
+	btnMenu.setAttribute("id", "btn-menu-start");
 
-// 	btnMenu.classList.add("btn-yellow", "m-style");
-// 	btnMenu.textContent = "PLAY VS PLAYER";
-// 	btnMenu.addEventListener("click", () => {
-// 		PpMenu.remove();
-// 	});
+	btnMenu.classList.add("btn-yellow", "m-style");
+	btnMenu.textContent = "PLAY VS PLAYER";
+	btnMenu.addEventListener("click", () => {
+		PpMenu.remove();
+	});
 
-// 	const imgBtnMenu = document.createElement("img");
-// 	imgBtnMenu.src = "./assets/player-vs-player.svg";
-// 	imgBtnMenu.alt = "player-vs-player";
-// 	imgBtnMenu.style.cursor = "pointer";
+	const imgBtnMenu = document.createElement("img");
+	imgBtnMenu.src = "./assets/player-vs-player.svg";
+	imgBtnMenu.alt = "player-vs-player";
+	imgBtnMenu.style.cursor = "pointer";
 
-// 	const btnMenu2 = document.createElement("button");
-// 	btnMenu2.setAttribute("id", "btn-menu-rules");
-// 	btnMenu2.classList.add("btn-white-menu", "m-style");
-// 	btnMenu2.textContent = "GAME RULES";
-// 	document.addEventListener("click", () => {
-// 		if (btnMenu2) {
-// 			btnMenu2.addEventListener("click", createRulesDialog);
-// 		}
+	const btnMenu2 = document.createElement("button");
+	btnMenu2.setAttribute("id", "btn-menu-rules");
+	btnMenu2.classList.add("btn-white-menu", "m-style");
+	btnMenu2.textContent = "GAME RULES";
+	document.addEventListener("click", () => {
+		if (btnMenu2) {
+			btnMenu2.addEventListener("click", createRulesDialog);
+		}
 
-// 		return;
-// 	});
+		return;
+	});
 
-// 	menuContainer.appendChild(imgMenu);
-// 	menuContainer.appendChild(imgBtnMenu);
-// 	menuContainer.appendChild(menuBtn);
-// 	menuBtn.appendChild(btnMenu);
-// 	btnMenu.appendChild(imgBtnMenu);
-// 	menuBtn.appendChild(btnMenu2);
-// 	PpMenu.appendChild(menuContainer);
-// 	body.appendChild(PpMenu);
-// }
+	menuContainer.appendChild(imgMenu);
+	menuContainer.appendChild(imgBtnMenu);
+	menuContainer.appendChild(menuBtn);
+	menuBtn.appendChild(btnMenu);
+	btnMenu.appendChild(imgBtnMenu);
+	menuBtn.appendChild(btnMenu2);
+	PpMenu.appendChild(menuContainer);
+	body.appendChild(PpMenu);
+}
 
 const btnStart = document.getElementById("btn-menu-start");
 btnStart.addEventListener("click", () => {
@@ -185,8 +185,8 @@ function openPauseMenu() {
 	btn3Pause.addEventListener("click", () => {
 		const body = document.body;
 		const ppMenu2 = document.querySelector(".pp-menu");
-		body.appendChild(ppMenu2);
 		PpPause.remove();
+		body.appendChild(openMenu());
 	});
 
 	return;
@@ -201,3 +201,29 @@ btnMenuNav.addEventListener("click", () => {
 // btnQuitGame.addEventListener("click", () => {
 // 	body.appendChild(openMenu);
 // });
+
+// ticket 23
+let scoreJoueur1 = 0;
+let scoreJoueur2 = 0;
+let joueurActuel = "Joueur 1";
+
+let colonneSelect = null;
+let tempsRestant = 15;
+
+const grille = [
+	["", "", "", "", "", "", ""],
+	["", "", "", "", "", "", ""],
+	["", "", "", "", "", "", ""],
+	["", "", "", "", "", "", ""],
+	["", "", "", "", "", "", ""],
+	["", "", "", "", "", "", ""],
+];
+
+// ticket 24
+function checkWinner() {
+	const rows = 6;
+	const columns = 7;
+	const board = [];
+
+	const buttons = document.querySelectorAll(".grid-game .grid");
+}
