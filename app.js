@@ -1,3 +1,80 @@
+document.addEventListener("DOMContentLoaded", function () {
+	const columns = document.querySelectorAll(".colonne");
+	let currentCol = 0;
+	let currentPlayer = 1;
+	let timeLeft = 15;
+	let countdown;
+	const timerDisplay = document.querySelector(".chrono-red .l-style"); // Affichage du chrono
+
+	function startTimer() {
+		clearInterval(countdown);
+		timeLeft = 15;
+		timerDisplay.textContent = `${timeLeft}s`;
+
+		countdown = setInterval(() => {
+			if (timeLeft <= 0) {
+				timeLeft = 15;
+				timerDisplay.textContent = `${timeLeft}s`;
+				switchPlayer();
+			} else {
+				timeLeft--;
+				timerDisplay.textContent = `${timeLeft}s`;
+			}
+		}, 1000);
+	}
+
+	function switchPlayer() {
+		if (currentPlayer === 1) {
+			currentPlayer = 2;
+		} else {
+			currentPlayer = 1;
+		}
+		startTimer();
+	}
+
+	function updateCursor() {
+		const colRect = columns[currentCol].getBoundingClientRect();
+		const offset = (colRect.width - cursor.offsetWidth) / 2;
+		cursor.style.left = `${colRect.left + offset}px`;
+
+		console.log("Colonne:", currentCol);
+	}
+
+	updateCursor();
+
+	document.addEventListener("keydown", function (e) {
+		if (e.key === "ArrowLeft" && currentCol > 0) {
+			currentCol--;
+			updateCursor();
+		}
+		if (e.key === "ArrowRight" && currentCol < columns.length - 1) {
+			currentCol++;
+			updateCursor();
+		}
+		if (e.key === " ") {
+			e.preventDefault();
+			const currentColumn = columns[currentCol];
+			const buttons = currentColumn.querySelectorAll(".grid");
+
+			for (let i = buttons.length - 1; i >= 0; i--) {
+				const img = buttons[i].querySelector("img");
+				if (!img.getAttribute("src")) {
+					if (currentPlayer === 1) {
+						img.src = "/assets/counter-red-large.svg";
+					} else {
+						img.src = "/assets/counter-yellow-large.svg";
+					}
+
+					switchPlayer();
+					break;
+				}
+			}
+		}
+	});
+
+	startTimer();
+});
+
 function createRulesDialog() {
 	if (document.querySelector(".pp-rules")) return;
 
@@ -189,6 +266,20 @@ function openPauseMenu() {
 		body.appendChild(openMenu());
 	});
 
+	btn1Pause.addEventListener("click", () => {
+		PpPause.close();
+	});
+
+	btn2Pause.addEventListener("click", () => {
+		location.reload();
+	});
+
+	const btnRestart = document.querySelector(".btn-nav-restart");
+
+	btnRestart.addEventListener("click", () => {
+		location.reload();
+	});
+
 	return;
 }
 
@@ -281,3 +372,13 @@ resultat = checkWinner(grilleAvecGagnant2); // retourne "X"
 resultat = checkWinner(grilleAvecGagnant3); // retourne "X"
 resultat = checkWinner(grilleAvecGagnant4); // retourne "O"
 resultat = checkWinner(grilleSansGagnant); // retourne ""
+
+const btnCol1 = document.getElementById("btngridcol1");
+const btnTarget = document.getElementById("btngrid1");
+
+btnCol1.addEventListener("click", () => {
+	const img = document.createElement("img");
+	img.src = "/assets/counter-yellow-large.svg";
+	img.alt = "pion jaune";
+	btnTarget.appendChild(img);
+});

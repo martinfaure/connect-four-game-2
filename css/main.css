@@ -164,10 +164,11 @@ nav li {
 .shape-1 {
 	position: relative;
 	z-index: 1;
+	top: 40px;
 }
 .shape-2 {
 	position: absolute;
-	top: 120px;
+	top: 155px;
 	z-index: 2;
 }
 
@@ -272,7 +273,7 @@ nav li {
 	grid-template-rows: repeat(6, 70px);
 	grid-gap: 18px;
 	left: 31%;
-	bottom: 25%;
+	bottom: 17%;
 }
 .grid-game button {
 	border-radius: 50%;
@@ -460,4 +461,18 @@ nav li {
 }
 .btn-yellow:hover {
 	box-shadow: 0px 10px 0px 0px var(--color-darkpurple);
+}
+
+.selectcol {
+	display: flex;
+	flex-direction: column;
+}
+
+.img-slect {
+	margin-left: 30px;
+}
+
+#cursor {
+	position: absolute;
+	top: 118px;
 }
